@@ -39,7 +39,7 @@ const questions = () => {
                 if(installationInput) {
                     return true;
                 } else {
-                    console.log('Please provide a step-by-step description of how to get the development environment running.');
+                    console.log('Please provide a step-by-step description of how to install the project.');
                     return false;
                 }
             }
@@ -99,16 +99,24 @@ const questions = () => {
             }
         }
     ]).then(data => {
-        console.log(data);
-    })
-}
+        writeToFile("README.md", generateMarkdown(data));
+    });
+};
+
 questions();
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
+function writeToFile(fileName, data) {
+    return new Promise((resolve, reject) =>{
+        fs.writeFile('dist/' + fileName, data, err =>{
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'README.md file has been created successfully!'
+            });
+        });
+    });
+};
