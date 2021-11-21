@@ -4,6 +4,10 @@
 
   Create a professional README.md file generator using node.js, and the inquirer package!
   
+  ## Walkthrough Video
+  
+  https://watch.screencastify.com/v/SIZhv6sMZrOOIzNprWeT
+  
   ## Table of Contents
 
   * [Installation](#installation)
